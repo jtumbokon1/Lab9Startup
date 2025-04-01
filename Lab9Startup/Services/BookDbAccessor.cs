@@ -141,7 +141,13 @@ namespace Lab9Startup.Services
         /// <param name="bookId"></param>
         public void DeleteBook(string bookId)
         {
-            throw new NotImplementedException();
+            var sql = "DELETE FROM books WHERE BookId = @BookId";
+
+            connection.Open();
+
+            connection.Execute(sql, new { BookId = bookId });
+
+            connection.Close();
         }
     }
 }
