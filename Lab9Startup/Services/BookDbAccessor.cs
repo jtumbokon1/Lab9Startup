@@ -95,9 +95,17 @@ namespace Lab9Startup.Services
         /// </summary>
         /// <param name="bookId"></param>
         /// <returns></returns>
-        public Book GetBook(string bookId)
+        public Book? GetBook(string bookId)
         {
-            throw new NotImplementedException();
+            var sql = "SELECT * FROM books WHERE BookId = @BookId";
+
+            connection.Open();
+
+            var book = connection.Query<Book>(sql, new { BookId = bookId }).FirstOrDefault();
+
+            connection.Close();
+
+            return book;
         }
 
         /// <summary>
@@ -106,7 +114,25 @@ namespace Lab9Startup.Services
         /// <param name="book"></param>
         public void UpdateBook(Book book)
         {
-            throw new NotImplementedException();
+            var sql = @"UPDATE books 
+                        SET Title = @Title, 
+                            Author = @Author, 
+                            Description = @Description, 
+                            Category = @Category 
+                        WHERE BookId = @BookId";
+
+            connection.Open();
+
+            connection.Execute(sql, new
+            {
+                book.BookId,
+                book.Title,
+                book.Author,
+                book.Description,
+                book.Category
+            });
+
+            connection.Close();
         }
 
         /// <summary>
