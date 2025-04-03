@@ -67,6 +67,7 @@ namespace Lab9Startup.Services
         /// <param name="book"></param>
         public void AddBook(Book book)
         {
+            // insert a new book into the database
             var sql = @"INSERT INTO books (BookId, Title, Author, Description, Category) 
                 VALUES (@BookId, @Title, @Author, @Description, @Category)";
 
@@ -90,10 +91,12 @@ namespace Lab9Startup.Services
         /// <returns></returns>
         public List<Book> GetBooks()
         {
+            // get all books from the database
             var sql = "SELECT * FROM books";
 
             connection.Open();
 
+            // execute the SQL query and map the result to a list of Book objects
             var books = connection.Query<Book>(sql).ToList();
 
             connection.Close();
@@ -109,10 +112,12 @@ namespace Lab9Startup.Services
         /// <returns></returns>
         public Book? GetBook(string bookId)
         {
+            // get a book from the database based on the bookId
             var sql = "SELECT * FROM books WHERE BookId = @BookId";
 
             connection.Open();
 
+            // execute the SQL query and map the result to a Book object
             var book = connection.Query<Book>(sql, new { BookId = bookId }).FirstOrDefault();
 
             connection.Close();
@@ -126,6 +131,7 @@ namespace Lab9Startup.Services
         /// <param name="book"></param>
         public void UpdateBook(Book book)
         {
+            // update a book in the database
             var sql = @"UPDATE books 
                         SET Title = @Title, 
                             Author = @Author, 
@@ -153,6 +159,7 @@ namespace Lab9Startup.Services
         /// <param name="bookId"></param>
         public void DeleteBook(string bookId)
         {
+            // delete a book from the database based on the bookId
             var sql = "DELETE FROM books WHERE BookId = @BookId";
 
             connection.Open();
