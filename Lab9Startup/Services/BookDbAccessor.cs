@@ -1,4 +1,16 @@
-﻿using Dapper;
+﻿/*
+ * ﻿/*
+ * Course: CPRG-211-C
+ * Lab: Database Connection
+ * Author: Jirch Tumbokon
+ * When: Winter 2025
+ * Purpose: This program connects to a MySQL database and performs CRUD operations on a books table.
+ *          It integrates an AddBook method to add a book to the database, a GetBooks method to retrieve all books,
+ *          GetBook method to retrieve a specific book, an UpdateBook method to update a book's details and
+ *          DeleteBook method to remove a book from the database.
+ */
+
+using Dapper;
 using Lab9Startup.Models;
 using MySqlConnector;
 
@@ -11,9 +23,9 @@ namespace Lab9Startup.Services
         public BookDbAccessor()
         {
             // get environemnt variable
-            //string dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-            //string dbUser = Environment.GetEnvironmentVariable("DB_USER");
-            //string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+            //string ?dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+            //string ?dbUser = Environment.GetEnvironmentVariable("DB_USER");
+            //string ?dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
             string dbHost = "localhost";
             string dbUser = "root";
             string dbPassword = "password";
