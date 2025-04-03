@@ -21,7 +21,7 @@ namespace Lab9Startup.Components.Pages
 
             // Get the list of books from the database
             // Uncomment once the GetBooks method is implemented in the BookDbAccessor class
-            // books = bookDbAccessor.GetBooks();
+             books = bookDbAccessor.GetBooks();
         }
 
         private void EditBook(Book book)
